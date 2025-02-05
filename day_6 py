@@ -1,13 +1,16 @@
 class Solution:
-    def reverse(self, x: int) -> int:
-        revnum = 0
-        sign = (x > 0) - (x < 0)  
-        x = abs(x)
+    def reverse(self, num: int) -> int:
+        reversed_num = 0
+        sign = 1 if num > 0 else -1 if num < 0 else 0  
+        num = abs(num)
         
-        while x:
-            revnum = revnum * 10 + x % 10
-            x //= 10
+        while num:
+            reversed_num = reversed_num * 10 + num % 10
+            num //= 10
         
-        revnum *= sign
+        reversed_num *= sign
         
-        return revnum if -2**31 <= revnum <= 2**31 - 1 else 0
+        if -2**31 <= reversed_num <= 2**31 - 1:
+            return reversed_num
+        else:
+            return 0
